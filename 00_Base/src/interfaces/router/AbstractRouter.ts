@@ -121,9 +121,12 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
 
   async handle(message: IMessage<OcppRequest | OcppResponse>): Promise<void> {
     this._logger.debug('Received message:', message);
+    this._logger.debug('Received message 2:', message.payload);
+    this._logger.debug('Received message 3:', message.state);
 
     if (message.state === MessageState.Response) {
       if (message.payload instanceof OcppError) {
+        this._logger.debug('SENDING ERROR IN ABSTRACT');
         await this.sendCallError(
           message.context.correlationId,
           message.context.stationId,
@@ -133,6 +136,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
           message.origin,
         );
       } else {
+        this._logger.debug('SENDING ERROR IN ABSTRACT 2');
         await this.sendCallResult(
           message.context.correlationId,
           message.context.stationId,
@@ -143,6 +147,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
         );
       }
     } else if (message.state === MessageState.Request) {
+      this._logger.debug('SENDING ERROR IN ABSTRACT 3');
       await this.sendCall(
         message.context.stationId,
         message.context.tenantId,

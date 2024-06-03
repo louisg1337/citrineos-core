@@ -306,8 +306,8 @@ export class MessageRouterImpl
       ) {
         // Intentionally removing NULL values from object for OCPP conformity
         const rawMessage = JSON.stringify(message, (k, v) => v ?? undefined);
-        this._logger.debug("HELLOOOOO I AM HEREEEEE IN SEND CALL");
-        this._logger.debug("RawMessage: " + rawMessage);
+        this._logger.debug("HELLOOOOO I AM HEREEEEE IN SEND CALL", identifier, message);
+        this._logger.debug("RawMessage: " + rawMessage, identifier, message);
         const success = await this._sendMessage(identifier, rawMessage);
         return { success };
       } else {
