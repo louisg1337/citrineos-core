@@ -918,7 +918,7 @@ export class MessageRouterImpl
     this._handleMessageApiCallback(_message);
 
     // No error routing currently done
-    throw new Error('Method not implemented.');
+    throw new Error('Method not WORKING.');
   }
 
   private async _handleMessageApiCallback(
