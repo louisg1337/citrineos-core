@@ -120,10 +120,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
    */
 
   async handle(message: IMessage<OcppRequest | OcppResponse>): Promise<void> {
-    this._logger.debug('Received test:', message);
-    this._logger.debug("HELLO I AM IN ABSTRACT ROUTER HANDLE");
-    this._logger.debug('Received message 2:', message.payload);
-    this._logger.debug('Received message 3:', message.state);
+    this._logger.debug('Received test123:', message);
 
     if (message.state === MessageState.Response) {
       if (message.payload instanceof OcppError) {
