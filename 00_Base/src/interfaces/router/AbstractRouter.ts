@@ -124,7 +124,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
 
     if (message.state === MessageState.Response) {
       if (message.payload instanceof OcppError) {
-        this._logger.debug('SENDING ERROR IN ABSTRACT');
+        this._logger.debug('[TEST] Send call error in handle');
         await this.sendCallError(
           message.context.correlationId,
           message.context.stationId,
@@ -134,7 +134,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
           message.origin,
         );
       } else {
-        this._logger.debug('SENDING ERROR IN ABSTRACT 2');
+        this._logger.debug('[TEST] Send call result in handle');
         await this.sendCallResult(
           message.context.correlationId,
           message.context.stationId,
@@ -145,7 +145,7 @@ export abstract class AbstractMessageRouter implements IMessageRouter {
         );
       }
     } else if (message.state === MessageState.Request) {
-      this._logger.debug('SENDING ERROR IN ABSTRACT 3');
+      this._logger.debug('[TEST] Send call in handle');
       await this.sendCall(
         message.context.stationId,
         message.context.tenantId,

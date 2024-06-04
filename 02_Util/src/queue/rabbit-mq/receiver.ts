@@ -205,6 +205,7 @@ export class RabbitMqReceiver extends AbstractMessageHandler {
   ): Promise<void> {
     if (message) {
       try {
+        this._logger.debug("[TEST] Received message!");
         this._logger.debug(
           '_onMessage:Received message:',
           message.properties,

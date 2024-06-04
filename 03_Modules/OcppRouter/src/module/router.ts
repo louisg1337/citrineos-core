@@ -224,7 +224,7 @@ export class MessageRouterImpl
     try {
       try {
         rpcMessage = JSON.parse(message);
-        this._logger.debug("HELLLOOOOO I AM HERE IN ONMESSAGE");
+        this._logger.debug("[TEST] I am in onMessage!", rpcMessage);
         messageTypeId = rpcMessage[0];
         messageId = rpcMessage[1];
       } catch (error) {
@@ -305,7 +305,7 @@ export class MessageRouterImpl
       ) {
         // Intentionally removing NULL values from object for OCPP conformity
         const rawMessage = JSON.stringify(message, (k, v) => v ?? undefined);
-        this._logger.debug("HELLOO I AM IN SENDCALL");
+        this._logger.debug("[TEST] I am in send call!", rawMessage);
         const success = await this._sendMessage(identifier, rawMessage);
         return { success };
       } else {

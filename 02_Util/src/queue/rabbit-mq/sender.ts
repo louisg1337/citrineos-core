@@ -114,6 +114,7 @@ export class RabbitMqSender
     const channel = this._channel || (await this._connect());
     this._channel = channel;
 
+    this._logger.debug("[TEST] Sending Message");
     this._logger.debug(`Publishing to ${exchange}:`, message);
 
     const success = channel.publish(
